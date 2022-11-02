@@ -1,0 +1,25 @@
+homeAssistant:
+  token: # ADD YOUR TOKEN
+  homeAssistantUrl:  # ADD YOUR URL like - 127.0.0.1:8123 or http://homeassistant-my-dns:8123
+  entityName: input_select.work_status
+  availableOptionName: Available
+  workingOptionName: Working
+  meetingMicrophoneOptionName: Meeting - microphone
+  meetingCameraOptionName: Meeting - camera
+  turnOffOptionName: Turn off
+window:
+  pinned: true
+  enablePreviousPosition: true
+  positionX:
+  positionY:
+workingTime:
+  days:
+    - MONDAY
+    - TUESDAY
+    - WEDNESDAY
+    - THURSDAY
+    - FRIDAY
+  start: 09:00
+  end: 17:00
+currentMode: AUTOMATION
+automationFrequencySeconds: 1.0
