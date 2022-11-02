@@ -106,7 +106,7 @@ public class SettingsManager {
                 .collect(Collectors.toList());
 
         if (!errors.isEmpty()) {
-            throw new ApplicationException("Invalid setting file - " + SETTING_PATH + ": " + String.join(" ,", errors));
+            throw new ApplicationException("Invalid setting file - " + SETTING_PATH + ": " + System.lineSeparator() + String.join(System.lineSeparator(), errors));
         }
 
     }
