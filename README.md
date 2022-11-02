@@ -1,12 +1,12 @@
 # HomeOffice - Home Assistant
 
-Application for notification of household members about the status of working from home. It has an automatic process that, based on working hours and the registry, sets the appropriate status to Home Assistant depending on whether you are available, working, having a meeting with or without a camera
+Windows application for notification of household members about the status of working from home. It has an automatic process that, based on working hours and the registry, sets the appropriate status to Home Assistant depending on whether you are available, working, having a meeting with or without a camera
 
 ![](https://github.com/Patresss/HomeOffice---Home-Assistant/blob/master/readme-resources/application.png)
 
 ## Download - 1.0.0 version
-* Installer exe (windows) - [download exe](https://github.com/Patresss/HomeOffice---Home-Assistant/releases/download/1.0.0/HomeOffice-1.0.0.exe)
-* Executable jar (bin/) - [download zip](https://github.com/Patresss/HomeOffice---Home-Assistant/releases/download/1.0.0/HomeOffice-1.0.0.zip)
+* Installer exe (windows) - [download exe](https://github.com/Patresss/HomeOffice---Home-Assistant/raw/master/release/1.0.0/HomeOffice%20-%20Home%20Assistant-1.0.0.exe)
+* Executable jar (bin/) - [download zip](https://github.com/Patresss/HomeOffice---Home-Assistant/raw/master/release/1.0.0/HomeOffice%20-%20Home%20Assistant-1.0.0.zip)
 
 ## Installation
 
@@ -82,6 +82,58 @@ workingTime:
 currentMode: <current mode>
 automationFrequencySeconds: <refreshing period when automation mode>
 ```
+
+## My Home Assistant card:
+```yaml
+type: vertical-stack
+cards:
+  - type: custom:mushroom-title-card
+    title: Dzień dobry, {{ user }}!
+  - type: custom:mushroom-chips-card
+    chips:
+      - type: template
+        icon: >-
+          {% if is_state("input_select.work_status", "Available") -%}
+            mdi:check
+          {% elif is_state("input_select.work_status", "Working") -%}
+            mdi:briefcase
+          {% elif is_state("input_select.work_status", "Meeting - microphone")
+          -%}
+            mdi:microphone
+          {% elif is_state("input_select.work_status", "Meeting - camera") -%}
+            mdi:camera
+          {% elif is_state("input_select.work_status", "Turn off") -%}
+            mdi:home
+          {%- endif %}
+        content: >-
+          {% if is_state("input_select.work_status", "Available") -%}
+            Patryk jest dostępny
+          {% elif is_state("input_select.work_status", "Working") -%}
+            Patryk pracuje
+          {% elif is_state("input_select.work_status", "Meeting - microphone")
+          -%}
+            Patryk ma spotkanie - mikrofon
+          {% elif is_state("input_select.work_status", "Meeting - camera") -%}
+            Patryk ma spotkanie - kamera
+          {% elif is_state("input_select.work_status", "Turn off") -%}
+            Patryk nie pracuje
+          {%- endif %}
+        icon_color: >-
+          {% if is_state("input_select.work_status", "Available") -%}
+            green
+          {% elif is_state("input_select.work_status", "Working") -%}
+            orange
+          {% elif is_state("input_select.work_status", "Meeting - microphone")
+          -%}
+            red
+          {% elif is_state("input_select.work_status", "Meeting - camera") -%}
+            purple
+          {% elif is_state("input_select.work_status", "Turn off") -%}
+            black
+          {%- endif %}
+
+```
+
 
 ## Built With
 
