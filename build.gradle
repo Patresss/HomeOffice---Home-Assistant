@@ -5,7 +5,7 @@ buildscript {
     ext.slf4j_version = '1.7.5'
     ext.fontawesomefx_fontawesome_version = '4.7.0-9.1.2'
     ext.fontawesomefx_commons_version = '9.1.2'
-    ext.jackson_version = '2.13.4.1'
+    ext.jackson_version = '2.13.3'
     ext.philips_hue_version = '2.4.0'
     ext.jna_version = '5.12.0'
 
