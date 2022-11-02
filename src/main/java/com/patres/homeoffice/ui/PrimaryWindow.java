@@ -49,7 +49,7 @@ public class PrimaryWindow {
             primaryStage.setY(windowSettings.positionY());
         }
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setTitle("HomeOffice - PhilipsHue");
+        primaryStage.setTitle("HomeOffice - Home Assistant");
         primaryStage.setScene(createScene(root));
 
         makeDraggable(primaryStage, root);
