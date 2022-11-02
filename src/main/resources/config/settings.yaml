@@ -1,6 +1,6 @@
 homeAssistant:
   token: # ADD YOUR TOKEN
-  homeAssistantUrl:  # ADD YOUR URL like - 127.0.0.1:8123 or http://homeassistant-my-dns:8123
+  homeAssistantUrl:  # ADD YOUR URL like - http://127.0.0.1:8123 or http://homeassistant-my-dns:8123
   entityName: input_select.work_status
   availableOptionName: Available
   workingOptionName: Working

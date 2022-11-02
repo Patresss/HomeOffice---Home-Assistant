@@ -73,7 +73,7 @@ def runArgsValue =  [
 
 def title = "HomeOffice - Home Assistant"
 project.version = "1.0.0"
-project.description = "Tool for automation lights: HomeOffice - Home Assistant"
+project.description = "Tool for automation: HomeOffice - Home Assistant"
 
 run {
     jvmArgs = runArgsValue
@@ -84,7 +84,6 @@ jlink {
     addExtraDependencies("javafx")
     mergedModule {
         additive = true
-        requires "com.fasterxml.jackson.databind"
     }
     launcher {
         name = title
@@ -97,7 +96,7 @@ jlink {
         outputDir = "../release/${project.version}"
         installerOptions = [
                 '--description', description,
-                '--copyright', 'Copyrigth 2021 Patres - Patryk Piechaczek'
+                '--copyright', 'Copyrigth 2022 Patres - Patryk Piechaczek'
         ]
         imageOptions += ['--icon', 'src/main/resources/icon/desktop/main_icon.ico']
         if (installerType == 'exe') {
