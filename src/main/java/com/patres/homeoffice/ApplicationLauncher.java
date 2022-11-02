@@ -1,10 +1,10 @@
 package com.patres.homeoffice;
 
 import com.patres.homeoffice.exception.ApplicationException;
-import com.patres.homeoffice.work.ErrorDialog;
-import com.patres.homeoffice.work.WorkManager;
 import com.patres.homeoffice.settings.SettingsManager;
 import com.patres.homeoffice.ui.PrimaryWindow;
+import com.patres.homeoffice.work.ErrorDialog;
+import com.patres.homeoffice.work.WorkManager;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -25,7 +25,7 @@ public class ApplicationLauncher extends Application {
     }
 
     @Override
-    public void start(final Stage primaryStage){
+    public void start(final Stage primaryStage) {
         logger.info("UI is running");
         try {
             final SettingsManager settingsManager = createSettingsManager();

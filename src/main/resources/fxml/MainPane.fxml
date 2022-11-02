@@ -33,7 +33,7 @@
                      <graphic>
                      </graphic>
                      <graphic>
-                        <FontAwesomeIconView glyphName="LIGHTBULB_ALT" />
+                        <FontAwesomeIconView glyphName="CHECK" />
                      </graphic>
                      <styleClass>
                         <String fx:value="main-button" />
@@ -44,7 +44,7 @@
                      <graphic>
                      </graphic>
                      <graphic>
-                        <FontAwesomeIconView glyphName="LIGHTBULB_ALT" styleClass="working-icon" />
+                        <FontAwesomeIconView glyphName="BRIEFCASE" styleClass="working-icon" />
                      </graphic>
                      <styleClass>
                         <String fx:value="main-button" />
@@ -55,13 +55,22 @@
                      <graphic>
                      </graphic>
                      <graphic>
-                        <FontAwesomeIconView glyphName="LIGHTBULB_ALT" styleClass="meeting-microphone-icon" />
+                        <FontAwesomeIconView glyphName="MICROPHONE" styleClass="meeting-microphone-icon" />
                      </graphic>
                      <styleClass>
                         <String fx:value="main-button" />
                         <String fx:value="meeting-microphone-button" />
                      </styleClass>
                   </JFXButton>
+                   <JFXButton fx:id="meetingWebcamButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" textAlignment="CENTER" GridPane.columnIndex="3">
+                       <graphic>
+                           <FontAwesomeIconView glyphName="VIDEO_CAMERA" />
+                       </graphic>
+                       <styleClass>
+                           <String fx:value="main-button" />
+                           <String fx:value="meeting-webcam-button" />
+                       </styleClass>
+                   </JFXButton>
                   <JFXButton fx:id="automationButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" textAlignment="CENTER" GridPane.columnIndex="4">
                      <graphic>
                      </graphic>
@@ -101,15 +110,7 @@
                         <JFXToggleButton fx:id="pinToggleButton" rotate="90.0" size="5.0" text=" " GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <JFXButton fx:id="meetingWebcamButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" textAlignment="CENTER" GridPane.columnIndex="3">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="LIGHTBULB_ALT" />
-                     </graphic>
-                     <styleClass>
-                        <String fx:value="main-button" />
-                        <String fx:value="meeting-webcam-button" />
-                     </styleClass>
-                  </JFXButton>
+
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" />
