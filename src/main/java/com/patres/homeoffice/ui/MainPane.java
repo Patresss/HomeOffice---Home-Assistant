@@ -37,11 +37,11 @@ public class MainPane extends AnchorPane {
 
 
     private final Stage primaryStage;
-    private final WorkManager phlipsHueManager;
+    private final WorkManager workManager;
 
-    public MainPane(final Stage primaryStage, final boolean pinned, WorkManager phlipsHueManager) throws IOException {
+    public MainPane(final Stage primaryStage, final boolean pinned, WorkManager workManager) throws IOException {
         this.primaryStage = primaryStage;
-        this.phlipsHueManager = phlipsHueManager;
+        this.workManager = workManager;
         this.primaryStage.setAlwaysOnTop(pinned);
 
         final FXMLLoader fxmlLoader = new FXMLLoader(PrimaryWindow.class.getResource("/fxml/MainPane.fxml"));
@@ -57,29 +57,29 @@ public class MainPane extends AnchorPane {
 
         availableButton.setOnAction(event -> {
             selectButton(availableButton);
-            new Thread(() -> phlipsHueManager.changeWorkMode(WorkMode.AVAILABLE)).start();
+            new Thread(() -> workManager.changeWorkMode(WorkMode.AVAILABLE)).start();
         });
         workingButton.setOnAction(event -> {
             selectButton(workingButton);
-            new Thread(() -> phlipsHueManager.changeWorkMode(WorkMode.WORKING)).start();
+            new Thread(() -> workManager.changeWorkMode(WorkMode.WORKING)).start();
         });
         meetingMicrophoneButton.setOnAction(event -> {
             selectButton(meetingMicrophoneButton);
-            new Thread(() -> phlipsHueManager.changeWorkMode(WorkMode.MEETING_MICROPHONE)).start();
+            new Thread(() -> workManager.changeWorkMode(WorkMode.MEETING_MICROPHONE)).start();
         });
         meetingWebcamButton.setOnAction(event -> {
             selectButton(meetingWebcamButton);
-            new Thread(() -> phlipsHueManager.changeWorkMode(WorkMode.MEETING_WEBCAM)).start();
+            new Thread(() -> workManager.changeWorkMode(WorkMode.MEETING_WEBCAM)).start();
         });
         automationButton.setOnAction(event -> {
             selectButton(automationButton);
-            new Thread(() -> phlipsHueManager.changeWorkMode(WorkMode.AUTOMATION)).start();
+            new Thread(() -> workManager.changeWorkMode(WorkMode.AUTOMATION)).start();
         });
         turnOffButton.setOnAction(event -> {
             selectButton(turnOffButton);
-            new Thread(() -> phlipsHueManager.changeWorkMode(WorkMode.TURN_OFF)).start();
+            new Thread(() -> workManager.changeWorkMode(WorkMode.TURN_OFF)).start();
         });
-        phlipsHueManager.getCurrentHomeOfficeMode()
+        workManager.getCurrentHomeOfficeMode()
                 .ifPresent(homeOfficeMode -> selectButton(getButtonByHomeOfficeMode(homeOfficeMode)));
     }
 
