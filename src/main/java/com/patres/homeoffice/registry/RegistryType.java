@@ -12,7 +12,11 @@ public enum RegistryType {
     }
 
     public String getNonPackagePath() {
-        return "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\" + pathValue + "\\NonPackaged";
+        return getPackagePath() + "\\NonPackaged";
+    }
+
+    public String getPackagePath() {
+        return "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\" + pathValue;
     }
 
 }
