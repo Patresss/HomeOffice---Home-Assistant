@@ -32,7 +32,7 @@ idea {
 }
 
 group 'com.patres'
-version '1.0.0'
+version '1.0.1'
 mainClassName = 'com.patres.homeoffice.ApplicationLauncher'
 application.mainModule = 'homeOffice'
 
@@ -72,7 +72,7 @@ def runArgsValue =  [
 ]
 
 def title = "HomeOffice - Home Assistant"
-project.version = "1.0.0"
+project.version = "1.0.1"
 project.description = "Tool for automation: HomeOffice - Home Assistant"
 
 run {

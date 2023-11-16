@@ -4,9 +4,9 @@ Windows application for notification of household members about the status of wo
 
 ![](https://github.com/Patresss/HomeOffice---Home-Assistant/blob/master/readme-resources/application.png)
 
-## Download - 1.0.0 version
-* Installer exe (windows) - [download exe](https://github.com/Patresss/HomeOffice---Home-Assistant/raw/master/release/1.0.0/HomeOffice%20-%20Home%20Assistant-1.0.0.exe)
-* Executable jar (bin/) - [download zip](https://github.com/Patresss/HomeOffice---Home-Assistant/raw/master/release/1.0.0/HomeOffice%20-%20Home%20Assistant-1.0.0.zip)
+## Download - 1.0.1 version
+* Installer exe (windows) - [download exe](https://github.com/Patresss/HomeOffice---Home-Assistant/raw/master/release/1.0.1/HomeOffice%20-%20Home%20Assistant-1.0.1.exe)
+* Executable jar (bin/) - [download zip](https://github.com/Patresss/HomeOffice---Home-Assistant/raw/master/release/1.0.1/HomeOffice%20-%20Home%20Assistant-1.0.1.zip)
 
 ## Installation
 
