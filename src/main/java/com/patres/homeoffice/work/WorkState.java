@@ -11,10 +11,10 @@ import static java.util.stream.Collectors.toList;
 
 public enum WorkState {
 
-    AVAILABLE(HomeAssistantSettings::availableOptionName, 4, automationProcess -> true),
-    WORKING(HomeAssistantSettings::workingOptionName, 3, AutomationProcess::isWorkingTime),
-    MEETING_MICROPHONE(HomeAssistantSettings::meetingMicrophoneOptionName, 2, AutomationProcess::isMicrophoneWorking),
-    MEETING_WEBCAM(HomeAssistantSettings::meetingCameraOptionName, 1, AutomationProcess::isWebcamWorking),
+    AVAILABLE(HomeAssistantSettings::availableOptionName, 4,true),
+    WORKING(HomeAssistantSettings::workingOptionName, 3,true),
+    MEETING_MICROPHONE(HomeAssistantSettings::meetingMicrophoneOptionName, 2,false),
+    MEETING_WEBCAM(HomeAssistantSettings::meetingCameraOptionName, 1,false),
     TURN_OFF(HomeAssistantSettings::turnOffOptionName);
 
     public static final List<WorkState> AUTOMATION_MODES = Arrays.stream(values())
@@ -23,17 +23,17 @@ public enum WorkState {
             .collect(toList());
     private final EntityOptionNameProvider entityOptionNameProvider;
     private final int automationOrder;
-    private final Predicate<AutomationProcess> automationProcessPredicate;
+    private final boolean timeRelatedState;
 
 
-    WorkState(EntityOptionNameProvider entityOptionNameProvider, int automationOrder, Predicate<AutomationProcess> automationProcessPredicate) {
+    WorkState(EntityOptionNameProvider entityOptionNameProvider, int automationOrder, final boolean timeRelatedState) {
         this.entityOptionNameProvider = entityOptionNameProvider;
         this.automationOrder = automationOrder;
-        this.automationProcessPredicate = automationProcessPredicate;
+        this.timeRelatedState = timeRelatedState;
     }
 
     WorkState(EntityOptionNameProvider entityOptionNameProvider) {
-        this(entityOptionNameProvider, -1, null);
+        this(entityOptionNameProvider, -1, false);
     }
 
 
@@ -41,21 +41,12 @@ public enum WorkState {
         return automationOrder;
     }
 
-    public boolean isAutomationProcessRunning(final AutomationProcess automationProcess) {
-        if (automationProcessPredicate == null) {
-            return false;
-        }
-        return automationProcessPredicate.test(automationProcess);
-    }
-
-    public static WorkState getAutomationAction(final AutomationProcess automationProcess) {
-        return AUTOMATION_MODES.stream()
-                .filter(mode -> mode.isAutomationProcessRunning(automationProcess))
-                .findFirst()
-                .orElse(AVAILABLE);
-    }
 
     public String getEntityOptionName(final HomeAssistantSettings settings) {
         return entityOptionNameProvider.getName(settings);
+    }
+
+    public boolean isTimeRelatedState() {
+        return timeRelatedState;
     }
 }

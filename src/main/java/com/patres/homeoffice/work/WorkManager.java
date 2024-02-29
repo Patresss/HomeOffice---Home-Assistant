@@ -25,7 +25,7 @@ public class WorkManager {
 
     public WorkManager(final SettingsManager settingsManager) {
         this.homeAssistantRestClient = new HomeAssistantRestClient(settingsManager.getSettings().homeAssistant());
-        this.automationProcess = new AutomationProcess(settingsManager.getSettings().workingTime());
+        this.automationProcess = new AutomationProcess(settingsManager.getSettings().workingTime(), this);
         this.currentWorkMode = settingsManager.getSettings().currentMode();
         this.automationFrequencySeconds = settingsManager.getSettings().automationFrequencySeconds();
         this.settingsManager = settingsManager;
@@ -43,6 +43,9 @@ public class WorkManager {
         if (currentWorkState != workState) {
             currentWorkState = workState;
             homeAssistantRestClient.changeOption(workState);
+            if (currentWorkMode != WorkMode.AUTOMATION) {
+                automationProcess.disableAutomation();
+            }
         }
     }
 
@@ -51,18 +54,10 @@ public class WorkManager {
     }
 
     public void enableAutomationChanges() {
-        final Thread thread = new Thread(() -> {
-            while (currentWorkMode == WorkMode.AUTOMATION) {
-                final WorkState automationAction = WorkState.getAutomationAction(automationProcess);
-                changeHomeOfficeState(automationAction);
-                try {
-                    Thread.sleep((long) (1000.0 * automationFrequencySeconds));
-                } catch (InterruptedException e) {
-                    throw new ApplicationException(e);
-                }
-            }
-        });
-        thread.start();
+        automationProcess.enableAutomation();
     }
 
+    public WorkState getCurrentWorkState() {
+        return currentWorkState;
+    }
 }
